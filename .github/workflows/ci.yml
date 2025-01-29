@@ -22,7 +22,7 @@ jobs:
               run: |
                   mkdir -p ~/.ssh
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-                  chmod 400 ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
                   ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
               env:
                   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -30,7 +30,7 @@ jobs:
 
             - name: Deploy to EC2
               run: |
-                  ssh $SSH_USER@$SSH_HOST "cd $WORK_DIR && git pull origin main && npm install && npm run build"
+                  ssh $SSH_USER@52.47.133.2 "cd $WORK_DIR && git pull origin main && npm install && npm run build"
               env:
                   SSH_USER: ${{ secrets.SSH_USER }}
                   SSH_HOST: ${{ secrets.SSH_HOST }}
