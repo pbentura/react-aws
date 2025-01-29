@@ -22,7 +22,7 @@ jobs:
 
             - name: Deploy to EC2
               run: |
-                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull origin main && npm install && npm run build"
+                  ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && git pull origin main"
 
             - name: Cleanup SSH key
               run: rm -rf ~/.ssh
