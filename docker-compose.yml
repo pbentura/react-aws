@@ -1,7 +1,12 @@
-version: '3.8'
+version: "3.8"
+
 services:
   react-app:
     build: .
     ports:
-      - "3000:3000"
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
     restart: always
